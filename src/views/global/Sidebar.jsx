@@ -1,7 +1,12 @@
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
+
 
 export default function AppSide(){
     // const context = React.useContext();
@@ -20,12 +25,14 @@ export default function AppSide(){
       },
     }}>
            
-          <SubMenu label="Charts">
+          
+          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>         
+          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>          
+          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
+          <SubMenu icon={<SignalCellularAltOutlinedIcon/>} label="Charts">
             <MenuItem disabled> Pie charts </MenuItem>
             <MenuItem> Line charts </MenuItem>
-          </SubMenu>
-          <MenuItem disabled> Documentation </MenuItem>
-          <MenuItem> Calendar </MenuItem>
+          </SubMenu>          
         </Menu>
       </Sidebar>  
         <div> 

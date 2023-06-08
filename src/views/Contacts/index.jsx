@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { mockDataContacts } from "../../data/mockContact";
-
+import React from "react";
 const columns = [
   { field: "id", headerName: "ID", flex: 0.5 },
   { field: "name", headerName: "Name", flex: 1 },
@@ -14,8 +14,16 @@ const columns = [
 ];
 
 const ContactsPage = () => {
+  const [rowSelectionModel, setRowSelectionModel] = React.useState([]);
+
+  const handleRowClick = (params) => {
+    setRowSelectionModel(params);
+    // console.log(
+    //   params.map((id) => mockDataContacts.find((row) => row.id === id))
+    // );
+  };
   return (
-    <div className="page-content">
+    <div>
       <div>
         <h1>Contact pages</h1>
       </div>
@@ -23,7 +31,7 @@ const ContactsPage = () => {
       <Box
         sx={{
           flex: "auto",
-          width: "100vw",
+          width: "90vw",
         }}
       >
         <DataGrid
@@ -38,8 +46,14 @@ const ContactsPage = () => {
           }}
           pageSizeOptions={[10]}
           checkboxSelection
-          disableRowSelectionOnClick
+          onRowSelectionModelChange={(newRowSelectionModel) => {
+            // setRowSelectionModel(newRowSelectionModel);
+            handleRowClick(newRowSelectionModel);
+          }}
+          rowSelectionModel={rowSelectionModel}
         />
+        <p>length {rowSelectionModel.length}</p>
+        
       </Box>
     </div>
   );

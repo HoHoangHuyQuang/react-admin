@@ -1,10 +1,10 @@
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined";
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -27,12 +27,14 @@ export default function AppSide() {
         >
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : <CloseOutlinedIcon/>}
+            icon={isCollapsed ? <MenuOutlinedIcon /> : <CloseOutlinedIcon />}
             style={{
               margin: "10px 0 20px 0",
             }}
           ></MenuItem>
-          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
+          <MenuItem icon={<HomeOutlinedIcon />} component={<Link to="/" />}>
+            Home
+          </MenuItem>
           <MenuItem
             icon={<ContactsOutlinedIcon />}
             component={<Link to="/contacts" />}

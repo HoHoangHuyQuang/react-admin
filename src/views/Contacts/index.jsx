@@ -1,7 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { DataGrid } from "@mui/x-data-grid";
 import { mockDataContacts } from "../../data/mockContact";
 import React from "react";
+
 const columns = [
   { field: "id", headerName: "ID", flex: 0.5 },
   { field: "name", headerName: "Name", flex: 1 },
@@ -22,16 +25,36 @@ const ContactsPage = () => {
     //   params.map((id) => mockDataContacts.find((row) => row.id === id))
     // );
   };
+  
   return (
     <div>
       <div>
         <h1>Contact pages</h1>
+        
+          <Button
+            variant="contained"
+            color="success"
+            startIcon={<AddOutlinedIcon />}
+            href="/contacts/create"
+          >
+            {" "}
+            Create
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            startIcon={<DeleteOutlinedIcon />}
+            href="#"
+          >
+            {" "}
+            Delete
+          </Button>
       </div>
 
       <Box
         sx={{
           flex: "auto",
-          width: "90vw",
+          width: "80vw",
         }}
       >
         <DataGrid
@@ -53,7 +76,6 @@ const ContactsPage = () => {
           rowSelectionModel={rowSelectionModel}
         />
         <p>length {rowSelectionModel.length}</p>
-        
       </Box>
     </div>
   );

@@ -23,7 +23,7 @@ const validate = values => {
     return errors;
   };
 
-const SignupForm = () => {
+const CreateForm = () => {
    // Pass the useFormik() hook initial form values, a validate function that will be called when
    // form values change or fields are blurred, and a submit function that will
    // be called when the form is submitted
@@ -74,3 +74,4 @@ const SignupForm = () => {
      </form>
    );
  };
+export default CreateForm;

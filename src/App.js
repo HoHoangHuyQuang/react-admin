@@ -5,6 +5,7 @@ import AppSide from "./views/global/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import ErrorPage from "./views/global/ErrorPage";
 import HomePage from "./views/Home/Index";
+import CreateForm from "./views/Contacts/ContactCreate";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/contacts/create" element={<CreateForm />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>

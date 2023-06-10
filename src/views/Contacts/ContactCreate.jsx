@@ -5,16 +5,14 @@ import Button from "@mui/material/Button";
 import { FormControl, FormLabel } from "@mui/material";
 const validate = (values) => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = "Required";
-  } else if (values.firstName.length > 15) {
-    errors.firstName = "Must be 15 characters or less";
+  if (!values.fName) {
+    errors.name = "Required";
   }
 
-  if (!values.lastName) {
-    errors.lastName = "Required";
-  } else if (values.lastName.length > 20) {
-    errors.lastName = "Must be 20 characters or less";
+  if (!values.age) {
+    errors.age = "Required";
+  } else if (values.age < 18) {
+    errors.lastName = "Must be 18+";
   }
 
   if (!values.email) {
@@ -32,9 +30,13 @@ const CreateForm = () => {
   // be called when the form is submitted
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      fName: "",
       email: "",
+      age: "",
+      phone: "",
+      address: "",
+      city: "",
+      zipCode: "",
     },
     validate,
     onSubmit: (values) => {
@@ -44,69 +46,63 @@ const CreateForm = () => {
   return (
     <React.Fragment>
       <form onSubmit={formik.handleSubmit}>
-        <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-          <TextField
-            type="text"
-            variant="outlined"
-            color="secondary"
-            label="First Name"
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-            fullWidth
-            required
-          />
-          {formik.errors.firstName ? (
-            <div>{formik.errors.firstName}</div>
-          ) : null}
-          <TextField
-            type="text"
-            variant="outlined"
-            color="secondary"
-            label="Last Name"
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-            fullWidth
-            required
-          />
-          {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
-        </Stack>
+        <TextField
+          type="text"
+          variant="outlined"
+          color="secondary"
+          label="Name"
+          onChange={formik.handleChange}
+          value={formik.values.fName}
+          fullWidth
+          required
+        />
+        {formik.errors.fName ? <div>{formik.errors.fName}</div> : null}
 
         <TextField
           type="email"
           variant="outlined"
           color="secondary"
           label="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={formik.handleChange}
+          value={formik.values.email}
           fullWidth
           required
           sx={{ mb: 4 }}
         />
-         {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+        <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
+          <TextField
+            type="number"
+            variant="outlined"
+            color="secondary"
+            label="Age"
+            onChange={formik.handleChange}
+            value={formik.values.age}
+            required
+            sx={{ mb: 4 }}
+          />
+          {formik.errors.age ? <div>{formik.errors.age}</div> : null}
+          <TextField
+            type="text"
+            variant="outlined"
+            color="secondary"
+            label="Phone"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+            sx={{ mb: 4 }}
+          />
+        </Stack>
         <TextField
-          type="password"
+          type="text"
           variant="outlined"
           color="secondary"
-          label="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          label="Address"
+          onChange={formik.handleChange}
+          value={formik.values.address}
+          multiline
           required
-          fullWidth
-          sx={{ mb: 4 }}
-        />
-        <TextField
-          type="date"
-          variant="outlined"
-          color="secondary"
-          label="Date of Birth"
-          onChange={(e) => setDateOfBirth(e.target.value)}
-          value={dateOfBirth}
-          fullWidth
-          required
-          sx={{ mb: 4 }}
         />
         <Button variant="outlined" color="secondary" type="submit">
-          Register
+          Create
         </Button>
       </form>
     </React.Fragment>

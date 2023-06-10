@@ -12,6 +12,7 @@ export default function AppSide() {
   // const context = React.useContext();
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   return (
+    <React.Fragment>
     <div style={{ display: "flex", height: "100vh", minHeight: "400px" }}>
       <Sidebar collapsed={isCollapsed}>
         <Menu
@@ -49,5 +50,6 @@ export default function AppSide() {
         </Menu>
       </Sidebar>
     </div>
+    </React.Fragment>
   );
 }

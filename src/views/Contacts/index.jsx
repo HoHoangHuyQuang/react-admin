@@ -25,30 +25,30 @@ const ContactsPage = () => {
     //   params.map((id) => mockDataContacts.find((row) => row.id === id))
     // );
   };
-  
+
   return (
-    <div>
+    <React.Fragment>
       <div>
         <h1>Contact pages</h1>
-        
-          <Button
-            variant="contained"
-            color="success"
-            startIcon={<AddOutlinedIcon />}
-            href="/contacts/create"
-          >
-            {" "}
-            Create
-          </Button>
-          <Button
-            variant="contained"
-            color="error"
-            startIcon={<DeleteOutlinedIcon />}
-            href="#"
-          >
-            {" "}
-            Delete
-          </Button>
+
+        <Button
+          variant="contained"
+          color="success"
+          startIcon={<AddOutlinedIcon />}
+          href="/contacts/create"
+        >
+          {" "}
+          Create
+        </Button>
+        <Button
+          variant="contained"
+          color="error"
+          startIcon={<DeleteOutlinedIcon />}
+          href="#"
+        >
+          {" "}
+          Delete
+        </Button>
       </div>
 
       <Box
@@ -77,7 +77,7 @@ const ContactsPage = () => {
         />
         <p>length {rowSelectionModel.length}</p>
       </Box>
-    </div>
+    </React.Fragment>
   );
 };
 export default ContactsPage;

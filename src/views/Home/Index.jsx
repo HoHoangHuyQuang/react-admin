@@ -1,7 +1,9 @@
+import React from "react";
+
 export default function HomePage(){
     return(
-        <div>
+        <React.Fragment>
             <h1>Home page</h1>
-        </div>
+        </React.Fragment>
     );
 }

@@ -2,27 +2,23 @@ import React from "react";
 import { useFormik } from "formik";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { FormControl, FormLabel } from "@mui/material";
-const validate = (values) => {
-  const errors = {};
-  if (!values.fName) {
-    errors.name = "Required";
-  }
+import { Box, Stack } from "@mui/material";
+import HeaderCmp from "../../components/HeaderComponent";
+import * as yup from "yup";
 
-  if (!values.age) {
-    errors.age = "Required";
-  } else if (values.age < 18) {
-    errors.lastName = "Must be 18+";
-  }
+const phoneRegExp =
+  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
-  return errors;
-};
+const checkoutSchema = yup.object().shape({
+  fName: yup.string().required("required"),
+  age:  yup.number().required().positive().integer(),
+  email: yup.string().email("invalid email").required("required"),
+  phone: yup
+    .string()
+    .matches(phoneRegExp, "Phone number is not valid")
+    .required("required"),
+  address1: yup.string().required("required"),  
+});
 
 const CreateForm = () => {
   // Pass the useFormik() hook initial form values, a validate function that will be called when
@@ -38,18 +34,18 @@ const CreateForm = () => {
       city: "",
       zipCode: "",
     },
-    validate,
+    validationSchema: {checkoutSchema},
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
   return (
     <React.Fragment>
+      <HeaderCmp title="Create contacts" subtitle="" />
       <form onSubmit={formik.handleSubmit}>
         <TextField
           type="text"
           variant="outlined"
-          color="secondary"
           label="Name"
           onChange={formik.handleChange}
           value={formik.values.fName}
@@ -61,7 +57,6 @@ const CreateForm = () => {
         <TextField
           type="email"
           variant="outlined"
-          color="secondary"
           label="Email"
           onChange={formik.handleChange}
           value={formik.values.email}
@@ -73,7 +68,6 @@ const CreateForm = () => {
           <TextField
             type="number"
             variant="outlined"
-            color="secondary"
             label="Age"
             onChange={formik.handleChange}
             value={formik.values.age}
@@ -84,7 +78,6 @@ const CreateForm = () => {
           <TextField
             type="text"
             variant="outlined"
-            color="secondary"
             label="Phone"
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -94,16 +87,18 @@ const CreateForm = () => {
         <TextField
           type="text"
           variant="outlined"
-          color="secondary"
           label="Address"
           onChange={formik.handleChange}
           value={formik.values.address}
           multiline
+          fullWidth
           required
         />
-        <Button variant="outlined" color="secondary" type="submit">
-          Create
-        </Button>
+        <Box justifyContent="end" display="flex">
+          <Button variant="contained" type="submit" color="success">
+            Create
+          </Button>
+        </Box>
       </form>
     </React.Fragment>
   );

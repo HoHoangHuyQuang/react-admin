@@ -5,7 +5,8 @@ import AppSide from "./views/global/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import ErrorPage from "./views/global/ErrorPage";
 import HomePage from "./views/Home/Index";
-import CreateForm from "./views/Contacts/ContactCreate";
+import CreateForm from "./views/Contacts/Create";
+import Topbar from "./views/global/Topbar";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <CssBaseline />
       <AppSide />
       <main className="content">
+        <Topbar/>
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/contacts" element={<ContactsPage />} />

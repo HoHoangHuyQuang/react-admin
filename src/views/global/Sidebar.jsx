@@ -1,9 +1,8 @@
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -43,10 +42,10 @@ export default function AppSide() {
             Contacts
           </MenuItem>
           <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          <SubMenu icon={<SignalCellularAltOutlinedIcon />} label="Charts">
+          {/* <SubMenu icon={<SignalCellularAltOutlinedIcon />} label="Charts">
             <MenuItem disabled> Pie charts </MenuItem>
             <MenuItem> Line charts </MenuItem>
-          </SubMenu>
+          </SubMenu> */}
         </Menu>
       </Sidebar>
     </div>

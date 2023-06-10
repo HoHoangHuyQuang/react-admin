@@ -4,6 +4,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { DataGrid } from "@mui/x-data-grid";
 import { mockDataContacts } from "../../data/mockContact";
 import React from "react";
+import HeaderCmp from "../../components/HeaderComponent";
 
 const columns = [
   { field: "id", headerName: "ID", flex: 0.5 },
@@ -27,10 +28,9 @@ const ContactsPage = () => {
   };
 
   return (
-    <React.Fragment>
+    <div>
+      <HeaderCmp title="Contacts" subtitle="Welcome to contact page" />
       <div>
-        <h1>Contact pages</h1>
-
         <Button
           variant="contained"
           color="success"
@@ -77,7 +77,8 @@ const ContactsPage = () => {
         />
         <p>length {rowSelectionModel.length}</p>
       </Box>
-    </React.Fragment>
+      {console.log(rowSelectionModel)}
+    </div>
   );
 };
 export default ContactsPage;

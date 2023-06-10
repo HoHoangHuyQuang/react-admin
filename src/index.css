@@ -14,7 +14,7 @@ code {
 html,
 body,
 .app,
-content,
+.content,
 #root {
   height: 100%;
   width: 100%;
@@ -30,7 +30,9 @@ content,
   position: relative;
   
 }
-
+content, main{
+  flex-direction:column;
+}
 ::-webkit-scrollbar {
   width: 1 em;
 }

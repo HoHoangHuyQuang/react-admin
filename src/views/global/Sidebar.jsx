@@ -41,11 +41,7 @@ export default function AppSide() {
           >
             Contacts
           </MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          {/* <SubMenu icon={<SignalCellularAltOutlinedIcon />} label="Charts">
-            <MenuItem disabled> Pie charts </MenuItem>
-            <MenuItem> Line charts </MenuItem>
-          </SubMenu> */}
+          
         </Menu>
       </Sidebar>
     </div>

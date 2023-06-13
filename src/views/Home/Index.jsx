@@ -1,9 +1,14 @@
 import React from "react";
+import DraftEditor from "../../components/RichTextEditor";
+import HeaderCmp from "../../components/HeaderComponent";
 
 export default function HomePage(){
     return(
         <React.Fragment>
-            <h1>Home page</h1>
+            <div>
+                <HeaderCmp title="Home page"/>
+            </div>
+            <DraftEditor/>
         </React.Fragment>
     );
 }
